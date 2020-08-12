@@ -1,73 +1,104 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+    <div class="row align-items-center">
+        <div class="col-md-6 col-lg-5 offset-lg-1 mb-4 mb-md-0">
+            <!-- Card -->
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <!-- Card Body -->
+                <div class="card-body p-4 p-lg-7">
+                    <h2 class="text-center mb-4">Sign in</h2>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+                    <!-- Sign in Form -->
+                    <form action="/">
+                        <!-- Email -->
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input id="email" class="form-control" type="email" placeholder="Your email">
+                        </div>
+                        <!-- End Email -->
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                        <!-- Password -->
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input id="password" class="form-control" type="email" placeholder="Enter your password">
+                        </div>
+                        <!-- End Password -->
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                        <div class="d-flex align-items-center justify-content-between my-4">
+                            <!-- Remember -->
+                            <div class="custom-control custom-checkbox">
+                                <input id="rememberMe" class="custom-control-input" type="checkbox">
+                                <label class="custom-control-label text-dark" for="rememberMe">Remember me</label>
                             </div>
+                            <!-- End Remember -->
+
+                            <a class="font-weight-semi-bold" href="account-password-recover.html">Forgot password?</a>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                        <button type="submit" class="btn btn-block btn-wide btn-primary text-uppercase">Sing Up</button>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
+                        <p class="text-center mb-0">
+                            Don’t have an account?
+                            <a class="font-weight-semi-bold" href="account-sign-up.html">Sign up here</a>
+                        </p>
                     </form>
+                    <!-- End Sign in Form -->
                 </div>
+                <!-- End Card Body -->
             </div>
+            <!-- End Card -->
+        </div>
+
+        <div class="col-md-6 col-lg-5 offset-lg-1">
+            <h2 class="h1">Improve your business<br class="d-none d-md-block"> cards and&nbsp;enhance your&nbsp;sales</h2>
+            <p class="font-weight-semi-bold text-primary mb-5">More then 30.000 clients</p>
+
+            <!-- Benefits -->
+            <ul class="list-unstyled mb-11">
+                <!-- Benefit -->
+                <li class="mb-4">
+                    <div class="media align-items-center">
+                        <div class="u-icon u-icon-sm rounded-circle bg-white text-primary mr-3">
+                            <span class="ti-lock"></span>
+                        </div>
+
+                        <div class="media-body">
+                            <p class="text-dark mb-0">Businesses often become known today through effective marketing</p>
+                        </div>
+                    </div>
+                </li>
+                <!-- End Benefit -->
+
+                <!-- Benefit -->
+                <li class="mb-4">
+                    <div class="media align-items-center">
+                        <div class="u-icon u-icon-sm rounded-circle bg-white text-primary mr-3">
+                            <span class="ti-briefcase"></span>
+                        </div>
+
+                        <div class="media-body">
+                            <p class="text-dark mb-0">Marketers/advertisers usually focus their efforts on the people responsible for making</p>
+                        </div>
+                    </div>
+                </li>
+                <!-- End Benefit -->
+
+                <!-- Benefit -->
+                <li class="mb-4">
+                    <div class="media align-items-center">
+                        <div class="u-icon u-icon-sm rounded-circle bg-white text-primary mr-3">
+                            <span class="ti-cup"></span>
+                        </div>
+
+                        <div class="media-body">
+                            <p class="text-dark mb-0">You have finished building your own website. You have introduced your company</p>
+                        </div>
+                    </div>
+                </li>
+                <!-- End Benefit -->
+            </ul>
+            <!-- End Benefits -->
         </div>
     </div>
-</div>
 @endsection

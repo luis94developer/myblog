@@ -1,80 +1,88 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<!-- Head -->
 <head>
+    <title>My Blog</title>
+
+    <!-- Meta -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <!--  Social tags -->
+    <meta name="keywords" content="Awesome Dashboard UI Kit, Bootstrap, Template, Theme, Freebies, MIT license, Free, Download">
+    <meta name="description" content="Awesome Dashboard UI Kit crafted by Htmlstream">
+    <meta name="author" content="htmlstream.com">
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <!-- Schema.org -->
+    <meta itemprop="name" content="Awesome Dashboard UI Kit">
+    <meta itemprop="description" content="Awesome Dashboard UI Kit crafted by Htmlstream">
+    <meta itemprop="image" content="{{ asset('assets/img-temp/aduik-preview.png') }}">
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@htmlstream">
+    <meta name="twitter:title" content="Awesome Dashboard UI Kit">
+    <meta name="twitter:description" content="Awesome Dashboard UI Kit crafted by Htmlstream">
+    <meta name="twitter:creator" content="@htmlstream">
+    <meta name="twitter:image" content="{{ asset('assets/img-temp/aduik-preview.png') }}">
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Htmlstream">
+    <meta property="og:title" content="Awesome Dashboard UI Kit">
+    <meta property="og:description" content="Awesome Dashboard UI Kit crafted by Htmlstream">
+    <meta property="og:url" content="https://htmlstream.com/preview/awesome-dashboard-ui-kit/">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="{{ asset('assets/img-temp/aduik-preview.png') }}">
+    <meta property="og:image:secure_url" content="{{ asset('assets/img-temp/aduik-preview.png') }}">
+
+    <!-- Web Fonts -->
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
+    <!-- Components Vendor Styles -->
+    <link rel="stylesheet" href="{{ asset('assets/vendor/themify-icons/themify-icons.css') }}">
+
+    <!-- Theme Styles -->
+    <link rel="stylesheet" href="{{ asset('assets/css/theme.css') }}">
 </head>
+<!-- End Head -->
+
+<!-- Body -->
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
+<!-- Main -->
+<main class="d-flex flex-column u-hero u-hero--end mnh-100vh" style="background-image: url({{ asset('assets/img-temp/bg/bg-1.png') }});">
+    <div class="container py-11 my-auto">
+        @yield('content')
     </div>
+
+    <!-- Footer -->
+    <footer class="u-footer mt-auto">
+        <div class="container">
+            <div class="d-md-flex align-items-md-center text-center text-md-left text-muted">
+                <!-- Footer Menu -->
+                <ul class="list-inline mb-3 mb-md-0">
+                    <li class="list-inline-item mr-4">
+                        <a class="text-muted" href="https://www.facebook.com/htmlstream" target="_blank">About Htmlstream</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="text-muted" href="https://htmlstream.com/" target="_blank">More Freebies</a>
+                    </li>
+                </ul>
+                <!-- End Footer Menu -->
+
+                <!-- Copyright -->
+                <span class="text-muted ml-auto">&copy; 2019 <a class="text-muted" href="https://htmlstream.com/" target="_blank">Htmlstream</a>. All Rights Reserved.</span>
+                <!-- End Copyright -->
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+</main>
+<!-- End Main -->
 </body>
+<!-- End Body -->
 </html>
