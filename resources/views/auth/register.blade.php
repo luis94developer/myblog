@@ -9,41 +9,50 @@
                 <h2 class="text-center mb-4">Create account</h2>
 
                 <!-- Create Account Form -->
-                <form action="/">
+                <form action="{{ route('register') }}" method="POST">
+                    {{ csrf_field() }}
                     <!-- Full Name -->
                     <div class="form-group">
-                        <label for="fullName">Full name</label>
-                        <input id="fullName" class="form-control" type="text" placeholder="Your full name">
+                        <label for="name">Full name</label>
+                        <input name="name" id="name" class="form-control @error('name') is-invalid @enderror" type="text" placeholder="Your full name" value="{{ old('name') }}">
+                        @if($errors->has('name'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('name') }}</strong>
+                            </span>
+                        @endif
                     </div>
                     <!-- End Full Name -->
 
                     <!-- Email -->
                     <div class="form-group">
                         <label for="email">Your email</label>
-                        <input id="email" class="form-control" type="email" placeholder="Your email">
+                        <input name="email" id="email" class="form-control @error('email') is-invalid @enderror" type="email" placeholder="Your email" value="{{ old('email') }}">
+                        @if($errors->has('email'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                        @endif
                     </div>
                     <!-- End Email -->
 
                     <!-- Password -->
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input id="password" class="form-control" type="password" placeholder="Enter your password">
+                        <input name="password" id="password" class="form-control @error('password') is-invalid @enderror" type="password" placeholder="Enter your password">
+                        @if($errors->has('password'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('password') }}</strong>
+                            </span>
+                        @endif
                     </div>
                     <!-- End Password -->
 
                     <!-- Password Confirmation -->
                     <div class="form-group">
                         <label for="password">Password Confirmation</label>
-                        <input id="password_confirmation" class="form-control" type="password" placeholder="Enter your password confirmation">
+                        <input name="password_confirmation" id="password_confirmation" class="form-control" type="password" placeholder="Enter your password confirmation">
                     </div>
                     <!-- End Password Confirmation -->
-
-                    <!-- Agreement -->
-                    <div class="custom-control custom-checkbox my-4">
-                        <input id="agreement" class="custom-control-input" type="checkbox" checked>
-                        <label class="custom-control-label text-dark" for="agreement">I agree with terms & conditions</label>
-                    </div>
-                    <!-- End Agreement -->
 
                     <button type="submit" class="btn btn-block btn-wide btn-primary text-uppercase">Sing Up</button>
 

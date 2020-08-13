@@ -3,10 +3,15 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Model\Verification;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use Illuminate\Database\Eloquent\Concerns\HasTimestamps;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -23,6 +28,7 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
+    use HasTimestamps;
 
     /**
      * Where to redirect users after registration.
@@ -69,5 +75,35 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    /**
+     * Sending email to verify new account
+     */
+    protected function verify(array $data) {
+        $email = $data['email'];
+        $name = $data['name'];
+        $subject = 'VERIFIED NEW ACCOUNT';
+        $token_verify = md5($name).md5($name).md5($name);
+
+        Verification::create([
+           'user_id' => Auth::user()->id,
+            'token' => $token_verify,
+            'created_at' => $this->freshTimestamp(),
+            'updated_at' => $this->freshTimestamp(),
+        ]);
+
+        Mail::send('auth.verify',
+            [
+                'name' => $name,
+                'token' => $token_verify
+            ], function ($mail) use ($email, $name, $subject) {
+                $mail->to($email, $name)->subject($subject);
+                $mail->from(env('MAIL_USERNAME'), $name);
+            });
+    }
+
+    public function processVerify($token) {
+        Log::info($token);
     }
 }
